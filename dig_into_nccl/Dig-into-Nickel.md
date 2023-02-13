@@ -100,7 +100,8 @@ static ncclResult_t ncclInit() {
 > 笔者搜索了此接口在`ncclCommInitRankDev`也会被调用，因此非root进程的也会正常初始化这些无状态的变量。
 
 重点关注`bootstrapNetInit`和`ncclNetPluginInit`两个接口实现：
-- bootstrapNetInit
+- bootstrapNetInit: 根据用户配置和内置规则查找对应的网卡，初始化核心全局变量bootstrapNetIfAddr和bootstrapNetIfName，作为host侧的通信网卡，在后续逻辑中会用到。
+- ncclNetPluginInit
 
 
 
